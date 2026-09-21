@@ -398,7 +398,7 @@ class CommandExecutor:
         self._desktop = DesktopExecutor()
         self._ai = GeminiAgent(
             api_key=cfg_mod.get_gemini_api_key(self._cfg),
-            model_name=config.get("gemini_model", "gemini-2.0-flash")
+            model_name=config.get("gemini_model", "gemini-3.6-flash")
         )
 
     def _api_key(self) -> str:
@@ -681,11 +681,31 @@ class CommandExecutor:
                 self._tts.say(msg)
                 return False, msg
             
-            # Provide context so AI knows what is currently happening
-            ctx_str = f"Current site: {self._ctx.site or 'None'}. Volume: {self._ctx.volume}. OS: Windows."
-            answer = self._ai.ask(str(value), context=ctx_str)
-            self._tts.say(answer)
-            return True, f"AI response: {answer}"
+            # Use Gemini to parse intent instead of just chatting
+            plan = self._ai.parse_intent(str(value))
+            
+            all_ok = True
+            final_msg = "Executed AI plan."
+            
+            # If Gemini just wants to talk:
+            if len(plan) == 1 and plan[0][0] == "ask_ai":
+                # Fallback to chat if intent parser failed or returned ask_ai
+                ctx_str = f"Current site: {self._ctx.site or 'None'}. Volume: {self._ctx.volume}. OS: Windows."
+                answer = self._ai.ask(str(value), context=ctx_str)
+                self._tts.say(answer)
+                return True, f"AI response: {answer}"
+
+            for sub_action, sub_value in plan:
+                if sub_action == "ai_speak":
+                    self._tts.say(str(sub_value))
+                else:
+                    ok, msg = self._dispatch(sub_action, sub_value)
+                    if not ok:
+                        all_ok = False
+                        final_msg = msg
+                        break
+
+            return all_ok, final_msg
 
         return False, f"Unknown action: {action}"
 

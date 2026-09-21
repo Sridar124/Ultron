@@ -65,7 +65,7 @@ DEFAULT_CONFIG: dict[str, Any] = {
     # ── Browser / YouTube ─────────────────────────────────────────────────
     "youtube_api_key": "",              # Prefer keyring; this is last resort
     "gemini_api_key": "",               # Prefer keyring; this is last resort
-    "gemini_model": "gemini-2.0-flash",
+    "gemini_model": "gemini-3.6-flash",
     "youtube_cache_max": 100,           # Max video ID cache entries
 
     # ── Push-to-talk ──────────────────────────────────────────────────────
