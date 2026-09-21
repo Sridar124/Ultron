@@ -13,12 +13,15 @@ Improvements over original:
 from __future__ import annotations
 
 import datetime
+import logging
 import re
 import threading
 import time
 import urllib.parse
 import urllib.request
 from typing import TYPE_CHECKING, Any
+
+from ultron.desktop import DesktopExecutor
 
 try:
     from rapidfuzz import fuzz, process as rf_process
@@ -72,7 +75,18 @@ SYNONYMS: dict[str, str] = {
     "goodbye":         "exit",
     "bye":             "exit",
     "quit":            "exit",
-    "close":           "exit",
+    # Desktop / Apps
+    "launch":          "open",
+    "run":             "open",
+    "start":           "open",
+    "kill":            "close app",
+    "shut down":       "shutdown",
+    "turn off":        "shutdown",
+    "reboot":          "restart",
+    "grab screenshot": "take screenshot",
+    "capture screen":  "take screenshot",
+    "system volume up":   "system volume up",
+    "system volume down": "system volume down",
 }
 
 APPROVED_FIXED = {
@@ -85,6 +99,11 @@ APPROVED_FIXED = {
     "queue list", "queue clear", "queue next",
     "exit", "quit", "goodbye", "bye",
     "spotify liked songs", "spotify new releases",
+    # Desktop
+    "take screenshot", "screenshot",
+    "lock screen", "lock my screen",
+    "shutdown", "restart", "cancel shutdown",
+    "system volume up", "system volume down",
 }
 
 
@@ -238,6 +257,52 @@ def _parse_single(text: str, context_site: str) -> list[tuple[str, Any]] | None:
     if text in {"exit", "quit", "goodbye", "bye", "close"}:
         return [("exit", None)]
 
+    # ── Desktop / OS controls ─────────────────────────────────────────────
+    if m := re.match(r"(?:open|launch|run|start)\s+app\s+(.+)", text):
+        return [("open_app", m.group(1).strip())]
+    if m := re.match(r"(?:open|launch|run|start)\s+(notepad|calculator|task manager|paint|wordpad|control panel|file explorer|explorer|cmd|command prompt|powershell|word|excel|powerpoint|outlook|vs code|vscode|visual studio code|chrome|firefox|edge|vlc|discord|spotify|telegram|whatsapp|steam|obs|snipping tool)", text):
+        return [("open_app", m.group(1).strip())]
+
+    if m := re.match(r"(?:close|kill)\s+app\s+(.+)", text):
+        return [("close_app", m.group(1).strip())]
+    if m := re.match(r"(?:close|kill)\s+(notepad|calculator|task manager|paint|wordpad|chrome|firefox|edge|vlc|discord|spotify|telegram|whatsapp|steam|obs|cmd|powershell|word|excel|powerpoint|outlook|vs code|vscode)", text):
+        return [("close_app", m.group(1).strip())]
+
+    if m := re.match(r"open\s+(desktop|documents|downloads|pictures|music|videos|home|temp)(?:\s+folder)?", text):
+        return [("open_folder", m.group(1).strip())]
+    if m := re.match(r"open\s+(?:my\s+)?(desktop|documents|downloads|pictures|music|videos)", text):
+        return [("open_folder", m.group(1).strip())]
+
+    if m := re.match(r"(?:find|search for)\s+file\s+(.+)", text):
+        return [("find_file", m.group(1).strip())]
+    if m := re.match(r"find\s+(.+)", text):
+        return [("find_file", m.group(1).strip())]
+
+    if m := re.match(r"open\s+file\s+(.+)", text):
+        return [("open_file", m.group(1).strip())]
+
+    if text in {"take screenshot", "screenshot", "capture screen", "grab screenshot"}:
+        return [("take_screenshot", None)]
+
+    if text in {"lock screen", "lock my screen", "lock"}:
+        return [("lock_screen", None)]
+
+    if text in {"shutdown", "shut down", "turn off", "power off"}:
+        return [("os_shutdown", None)]
+
+    if text in {"restart", "reboot"}:
+        return [("os_restart", None)]
+
+    if text in {"cancel shutdown", "abort shutdown"}:
+        return [("os_cancel_shutdown", None)]
+
+    if text in {"system volume up"}:
+        return [("sys_volume_change", +20)]
+    if text in {"system volume down"}:
+        return [("sys_volume_change", -20)]
+    if m := re.fullmatch(r"set system volume\s+(\d{1,3})(?:\s*percent)?", text):
+        return [("sys_volume_set", int(m.group(1)))]
+
     return None
 
 
@@ -290,6 +355,16 @@ HELP_TEXT = """
 ║  status                                                    ║
 ║  history [N]                                               ║
 ║  help / exit                                               ║
+║ DESKTOP ACCESS                                             ║
+║  open notepad / calculator / vs code / discord / ...       ║
+║  close notepad / chrome / ...                              ║
+║  open downloads / documents / desktop / pictures ...       ║
+║  find file <name>                                          ║
+║  open file <name>                                          ║
+║  take screenshot                                           ║
+║  system volume up / down / set system volume <0-100>       ║
+║  lock screen                                               ║
+║  shutdown / restart / cancel shutdown                      ║
 ╚═══════════════════════════════════════════════════════════╝
 Voice: Say "Activate ULTRON" to start. Hold Ctrl+Space to PTT.
 """.strip()
@@ -307,6 +382,7 @@ class CommandExecutor:
         api_key_getter,
         start_time: float,
     ) -> None:
+        from ultron.desktop import DesktopExecutor
         self._browser = browser
         self._ctx = context
         self._tts = tts
@@ -314,6 +390,7 @@ class CommandExecutor:
         self._get_api_key = api_key_getter
         self._start_time = start_time
         self._timers: list[threading.Timer] = []
+        self._desktop = DesktopExecutor()
 
     def _api_key(self) -> str:
         return self._get_api_key()
@@ -527,6 +604,67 @@ class CommandExecutor:
         if action == "exit":
             self._tts.say("Goodbye.")
             return True, "__exit__"
+
+        # ── Desktop / OS ──────────────────────────────────────────────────
+        if action == "open_app":
+            ok, msg = self._desktop.open_app(str(value))
+            self._tts.say(msg)
+            return ok, msg
+
+        if action == "close_app":
+            ok, msg = self._desktop.close_app(str(value))
+            self._tts.say(msg)
+            return ok, msg
+
+        if action == "open_folder":
+            ok, msg = self._desktop.open_folder(str(value))
+            self._tts.say(msg)
+            return ok, msg
+
+        if action == "open_file":
+            ok, msg = self._desktop.open_file(str(value))
+            self._tts.say(msg)
+            return ok, msg
+
+        if action == "find_file":
+            ok, msg = self._desktop.find_file(str(value))
+            self._tts.say(msg)
+            return ok, msg
+
+        if action == "take_screenshot":
+            ok, msg = self._desktop.take_screenshot()
+            self._tts.say(msg)
+            return ok, msg
+
+        if action == "lock_screen":
+            ok, msg = self._desktop.lock_screen()
+            self._tts.say(msg)
+            return ok, msg
+
+        if action == "os_shutdown":
+            ok, msg = self._desktop.shutdown()
+            self._tts.say(msg)
+            return ok, msg
+
+        if action == "os_restart":
+            ok, msg = self._desktop.restart()
+            self._tts.say(msg)
+            return ok, msg
+
+        if action == "os_cancel_shutdown":
+            ok, msg = self._desktop.cancel_shutdown()
+            self._tts.say(msg)
+            return ok, msg
+
+        if action == "sys_volume_change":
+            ok, msg = self._desktop.set_system_volume(delta=int(value))
+            self._tts.say(msg)
+            return ok, msg
+
+        if action == "sys_volume_set":
+            ok, msg = self._desktop.set_system_volume(absolute=int(value))
+            self._tts.say(msg)
+            return ok, msg
 
         return False, f"Unknown action: {action}"
 

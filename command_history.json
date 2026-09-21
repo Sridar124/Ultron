@@ -938,5 +938,45 @@
     "ts": "2026-09-21 12:52:08",
     "cmd": "weather in Tokyo",
     "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:53:41",
+    "cmd": "YouTube",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:53:53",
+    "cmd": "play any video",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:54:24",
+    "cmd": "play next video",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:54:30",
+    "cmd": "full screen",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:55:01",
+    "cmd": "exit full screen",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:55:09",
+    "cmd": "full screen",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:55:18",
+    "cmd": "exit full screen",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:55:35",
+    "cmd": "resume",
+    "ok": true
   }
 ]
