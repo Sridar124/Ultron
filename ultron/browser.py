@@ -414,11 +414,17 @@ class YouTubeBrowser:
             )
 
         elif action == "fullscreen":
-            result = self._video_js(
-                "const b=document.querySelector('.ytp-fullscreen-button');"
-                "if(b){b.click(); return true;}"
-                "return false;"
-            )
+            if self.driver:
+                from selenium.webdriver.common.keys import Keys
+                from selenium.webdriver.common.action_chains import ActionChains
+                try:
+                    ActionChains(self.driver).send_keys('f').perform()
+                    print(f"media_action({action}): True")
+                    return True
+                except Exception as e:
+                    print(f"Fullscreen error: {e}")
+            return False
+            
         else:
             return False
 
