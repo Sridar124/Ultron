@@ -45,8 +45,8 @@ class PTTHotkey:
         if not self._hotkey:
             return
         try:
-            keyboard.on_press_key(self._hotkey, self._handle_press, suppress=False)
-            keyboard.on_release_key(self._hotkey, self._handle_release, suppress=False)
+            # add_hotkey supports combo keys like ctrl+space
+            keyboard.add_hotkey(self._hotkey, self._handle_press, suppress=False)
             print(f"PTT hotkey active: hold [{self._hotkey.upper()}] to speak.")
         except Exception as exc:
             logging.warning("PTT hotkey setup failed: %s", exc)

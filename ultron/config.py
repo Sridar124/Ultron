@@ -64,6 +64,8 @@ DEFAULT_CONFIG: dict[str, Any] = {
 
     # ── Browser / YouTube ─────────────────────────────────────────────────
     "youtube_api_key": "",              # Prefer keyring; this is last resort
+    "gemini_api_key": "",               # Prefer keyring; this is last resort
+    "gemini_model": "gemini-2.0-flash",
     "youtube_cache_max": 100,           # Max video ID cache entries
 
     # ── Push-to-talk ──────────────────────────────────────────────────────
@@ -121,6 +123,31 @@ def get_api_key(config: dict[str, Any]) -> str:
     return ""
 
 
+def get_gemini_api_key(config: dict[str, Any]) -> str:
+    """Retrieve Gemini API key with secure priority chain."""
+    # 1. Windows Credential Manager
+    if _KEYRING_AVAILABLE and keyring is not None:
+        try:
+            stored = keyring.get_password(_KEYRING_SERVICE, "gemini_api_key")
+            if stored:
+                return stored
+        except keyring.errors.KeyringError as exc:
+            logging.warning("Keyring read failed: %s", exc)
+
+    # 2. Environment variable
+    env_key = os.environ.get("GEMINI_API_KEY", "").strip()
+    if env_key:
+        return env_key
+
+    # 3. Plain-text config (warn)
+    cfg_key = str(config.get("gemini_api_key", "")).strip()
+    if cfg_key:
+        logging.warning("Gemini API key loaded from plain-text config.")
+        return cfg_key
+
+    return ""
+
+
 def save_api_key(key: str) -> bool:
     """Store API key in Windows Credential Manager via keyring."""
     if not _KEYRING_AVAILABLE or keyring is None:
@@ -136,9 +163,10 @@ def save_api_key(key: str) -> bool:
 
 
 def save(config: dict[str, Any]) -> None:
-    """Write config back to disk (never writes the API key to file)."""
-    safe = {k: v for k, v in config.items() if k != "youtube_api_key"}
+    """Write config back to disk (never writes the API keys to file)."""
+    safe = {k: v for k, v in config.items() if k not in ("youtube_api_key", "gemini_api_key")}
     safe["youtube_api_key"] = ""        # Always blank out key on save
+    safe["gemini_api_key"] = ""         # Always blank out key on save
     try:
         CONFIG_PATH.write_text(
             json.dumps(safe, indent=2, ensure_ascii=False) + "\n",

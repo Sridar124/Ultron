@@ -157,10 +157,10 @@ def plan_instruction(raw: str, context_site: str = "") -> list[tuple[str, Any]]:
     for part in parts:
         step = _parse_single(part.strip(), context_site)
         if step is None:
-            # Try fuzzy match as last resort
             step = _fuzzy_match(part.strip(), context_site)
         if step is None:
-            return []      # Unknown step — reject whole plan
+            # If any part of the chain is unknown, pass the entire original text to AI
+            return [("ask_ai", text)]
         plan.extend(step if isinstance(step, list) else [step])
 
     return plan
@@ -303,6 +303,9 @@ def _parse_single(text: str, context_site: str) -> list[tuple[str, Any]] | None:
     if m := re.fullmatch(r"set system volume\s+(\d{1,3})(?:\s*percent)?", text):
         return [("sys_volume_set", int(m.group(1)))]
 
+    if m := re.match(r"(?:ask|tell)\s+(?:me\s+)?(.+)", text):
+        return [("ask_ai", m.group(1).strip())]
+
     return None
 
 
@@ -382,7 +385,9 @@ class CommandExecutor:
         api_key_getter,
         start_time: float,
     ) -> None:
+        from ultron import config as cfg_mod
         from ultron.desktop import DesktopExecutor
+        from ultron.ai import GeminiAgent
         self._browser = browser
         self._ctx = context
         self._tts = tts
@@ -391,6 +396,10 @@ class CommandExecutor:
         self._start_time = start_time
         self._timers: list[threading.Timer] = []
         self._desktop = DesktopExecutor()
+        self._ai = GeminiAgent(
+            api_key=cfg_mod.get_gemini_api_key(self._cfg),
+            model_name=config.get("gemini_model", "gemini-2.0-flash")
+        )
 
     def _api_key(self) -> str:
         return self._get_api_key()
@@ -665,6 +674,18 @@ class CommandExecutor:
             ok, msg = self._desktop.set_system_volume(absolute=int(value))
             self._tts.say(msg)
             return ok, msg
+
+        if action == "ask_ai":
+            if not self._ai.ready:
+                msg = "AI module is not connected. Check your Gemini API key."
+                self._tts.say(msg)
+                return False, msg
+            
+            # Provide context so AI knows what is currently happening
+            ctx_str = f"Current site: {self._ctx.site or 'None'}. Volume: {self._ctx.volume}. OS: Windows."
+            answer = self._ai.ask(str(value), context=ctx_str)
+            self._tts.say(answer)
+            return True, f"AI response: {answer}"
 
         return False, f"Unknown action: {action}"
 
