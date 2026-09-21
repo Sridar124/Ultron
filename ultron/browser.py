@@ -166,6 +166,18 @@ class YouTubeBrowser:
             options = ChromeOptions()
             options.add_argument("--disable-notifications")
             options.add_argument("--autoplay-policy=no-user-gesture-required")
+            
+            # Force Selenium to use standard installed Chrome instead of downloading Chromium
+            chrome_paths = [
+                os.path.join(os.environ.get("PROGRAMFILES", ""), "Google", "Chrome", "Application", "chrome.exe"),
+                os.path.join(os.environ.get("PROGRAMFILES(X86)", ""), "Google", "Chrome", "Application", "chrome.exe"),
+                os.path.join(os.environ.get("LOCALAPPDATA", ""), "Google", "Chrome", "Application", "chrome.exe"),
+            ]
+            for p in chrome_paths:
+                if os.path.isfile(p):
+                    options.binary_location = p
+                    break
+                    
             self.driver = webdriver.Chrome(options=options)
             self.driver.set_page_load_timeout(30)
             print("Controlled Chrome session started.")
