@@ -678,5 +678,110 @@
     "ts": "2026-09-21 12:24:00",
     "cmd": "activate Ultron",
     "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:29:33",
+    "cmd": "deactivate alarm",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:29:39",
+    "cmd": "Ultra deactivate",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:30:32",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:30:48",
+    "cmd": "YouTube photo",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:31:01",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:31:14",
+    "cmd": "YouTube",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:31:23",
+    "cmd": "play any English song",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:31:32",
+    "cmd": "keypad",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:31:42",
+    "cmd": "skip ads",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:32:00",
+    "cmd": "full screen",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:32:19",
+    "cmd": "next video",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:32:26",
+    "cmd": "HD video",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:32:32",
+    "cmd": "skip 10 seconds",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:32:44",
+    "cmd": "volume 10",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:32:50",
+    "cmd": "set volume 100",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:35:06",
+    "cmd": "full screen",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:35:16",
+    "cmd": "keypads",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:35:33",
+    "cmd": "Kumbh rashifal",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:35:45",
+    "cmd": "50000 spelling",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:35:55",
+    "cmd": "sex automation",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:36:09",
+    "cmd": "efficiency",
+    "ok": false
   }
 ]

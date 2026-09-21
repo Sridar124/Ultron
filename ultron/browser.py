@@ -235,10 +235,19 @@ class YouTubeBrowser:
     # ── Navigation helpers ────────────────────────────────────────────────
 
     def is_on(self, domain: str) -> bool:
-        return (
-            self.driver is not None
-            and domain in self.driver.current_url
-        )
+        if self.driver is None:
+            return False
+        if domain in self.driver.current_url:
+            return True
+        # Check other tabs in this Selenium session
+        try:
+            for handle in reversed(self.driver.window_handles):
+                self.driver.switch_to.window(handle)
+                if domain in self.driver.current_url:
+                    return True
+        except WebDriverException:
+            pass
+        return False
 
     def youtube_search(self, query: str) -> bool:
         url = "https://www.youtube.com/results?search_query=" + urllib.parse.quote_plus(query)
@@ -354,13 +363,24 @@ class YouTubeBrowser:
             return False
 
         if action == "play":
-            result = self._try_play()
+            result = self._video_js(
+                "const b=document.querySelector('.ytp-play-button');"
+                "if(b&&b.getAttribute('aria-label','').includes('Play')){b.click(); return true;}"
+                "return false;"
+            )
+            if not result: result = self._try_play()
 
         elif action == "pause":
             result = self._video_js(
-                "const p=document.getElementById('movie_player');"
-                "if(!p)return false; p.pauseVideo(); return true;"
+                "const b=document.querySelector('.ytp-play-button');"
+                "if(b&&b.getAttribute('aria-label','').includes('Pause')){b.click(); return true;}"
+                "return false;"
             )
+            if not result:
+                result = self._video_js(
+                    "const v=document.querySelector('video');"
+                    "if(!v)return false; v.pause(); return v.paused;"
+                )
 
         elif action == "next":
             result = self._video_js(
