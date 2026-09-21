@@ -167,6 +167,9 @@ class YouTubeBrowser:
             options.add_argument("--disable-notifications")
             options.add_argument("--autoplay-policy=no-user-gesture-required")
             
+            # Anti-bot evasion: prevent YouTube from detecting Selenium and blocking playback
+            options.add_argument("--disable-blink-features=AutomationControlled")
+            
             # Use a persistent profile so the user stays logged in
             profile_dir = PROJECT_DIR / "ultron_chrome_profile"
             options.add_argument(f"--user-data-dir={profile_dir}")
@@ -187,6 +190,12 @@ class YouTubeBrowser:
                     break
                     
             self.driver = webdriver.Chrome(options=options)
+            
+            # Anti-bot evasion: wipe the navigator.webdriver property on every new page
+            self.driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+                "source": "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+            })
+            
             self.driver.set_page_load_timeout(30)
             print("Controlled Chrome session started.")
             return True
