@@ -398,7 +398,7 @@ class CommandExecutor:
         self._desktop = DesktopExecutor()
         self._ai = GeminiAgent(
             api_key=cfg_mod.get_gemini_api_key(self._cfg),
-            model_name=config.get("gemini_model", "gemini-3.6-flash")
+            model_name=config.get("gemini_model", "gemini-2.5-flash")
         )
 
     def _api_key(self) -> str:

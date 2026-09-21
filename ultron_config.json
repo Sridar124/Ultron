@@ -27,7 +27,7 @@
   "speech_recognition_language": "en-IN",
   "tts_rate": 185,
   "youtube_api_key": "",
-  "gemini_model": "gemini-3.6-flash",
+  "gemini_model": "gemini-2.5-flash",
   "youtube_cache_max": 100,
   "ptt_hotkey": "ctrl+space",
   "max_restarts": 3,

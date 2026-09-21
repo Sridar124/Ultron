@@ -260,22 +260,18 @@ class Ultron:
     def _handle_command(self, raw: str) -> bool:
         """
         Process one command. Returns False only when Ultron should stop.
+        Unknown commands are routed to Gemini AI automatically.
         """
         command = raw.strip()
-        norm = _normalize(command)
 
         if self._is_deactivation(command):
             self._deactivate("deactivated by voice")
             return True
 
         plan = plan_instruction(command, self._ctx.site)
+        # If no hardcoded plan, send to AI intent parser
         if not plan:
-            self._tts.say_error(
-                "That request is not approved or I couldn't understand it. "
-                "Say help for the command list."
-            )
-            self._ctx.add_history(command, success=False)
-            return True
+            plan = [("ask_ai", command)]
 
         self._tray.set_state("processing")
         keep = True
@@ -286,15 +282,18 @@ class Ultron:
                 break
             if not ok:
                 self._tts.say_error(
-                    random.choice(FAIL_TEMPLATES).format(msg=msg) +
-                    " I stopped the remaining steps."
+                    random.choice(FAIL_TEMPLATES).format(msg=msg)
                 )
                 self._ctx.add_history(command, success=False)
                 self._tray.set_state("active" if self._active else "idle")
                 return keep
-            # Only speak ack if not weather/status/history (they speak themselves)
-            if action not in {"weather", "status", "history", "help",
-                               "queue_list", "queue_clear", "timer"}:
+            # Don't speak an ACK for actions that already speak themselves
+            silent_actions = {
+                "weather", "status", "history", "help",
+                "queue_list", "queue_clear", "timer",
+                "ask_ai", "ai_speak",
+            }
+            if action not in silent_actions:
                 self._tts.say_ack(random.choice(ACK_TEMPLATES).format(msg=msg))
 
         self._ctx.add_history(command, success=True)
