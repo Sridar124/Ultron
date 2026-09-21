@@ -888,5 +888,55 @@
     "ts": "2026-09-21 12:44:37",
     "cmd": "full screen",
     "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:50:06",
+    "cmd": "YouTube",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:50:14",
+    "cmd": "play any video",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:50:29",
+    "cmd": "resume",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:50:35",
+    "cmd": "full screen",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:50:48",
+    "cmd": "full screen",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:50:54",
+    "cmd": "escape",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:51:00",
+    "cmd": "exit full screen",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:51:18",
+    "cmd": "resume",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:52:02",
+    "cmd": "Tokyo",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:52:08",
+    "cmd": "weather in Tokyo",
+    "ok": true
   }
 ]

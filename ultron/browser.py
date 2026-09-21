@@ -364,23 +364,21 @@ class YouTubeBrowser:
 
         if action == "play":
             result = self._video_js(
-                "const b=document.querySelector('.ytp-play-button');"
-                "if(b&&(b.getAttribute('aria-label')||'').includes('Play')){b.click(); return true;}"
+                "const p=document.getElementById('movie_player');"
+                "if(p && p.playVideo){p.playVideo(); return true;}"
+                "const v=document.querySelector('video');"
+                "if(v){v.play(); return true;}"
                 "return false;"
             )
-            if not result: result = self._try_play()
 
         elif action == "pause":
             result = self._video_js(
-                "const b=document.querySelector('.ytp-play-button');"
-                "if(b&&(b.getAttribute('aria-label')||'').includes('Pause')){b.click(); return true;}"
+                "const p=document.getElementById('movie_player');"
+                "if(p && p.pauseVideo){p.pauseVideo(); return true;}"
+                "const v=document.querySelector('video');"
+                "if(v){v.pause(); return true;}"
                 "return false;"
             )
-            if not result:
-                result = self._video_js(
-                    "const v=document.querySelector('video');"
-                    "if(!v)return false; v.pause(); return v.paused;"
-                )
 
         elif action == "next":
             result = self._video_js(
