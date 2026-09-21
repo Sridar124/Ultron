@@ -783,5 +783,110 @@
     "ts": "2026-09-21 12:36:09",
     "cmd": "efficiency",
     "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:39:25",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:39:30",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:39:38",
+    "cmd": "YouTube",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:40:03",
+    "cmd": "play Godzilla trailer",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:40:07",
+    "cmd": "full screen",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:40:31",
+    "cmd": "set volume 50",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:40:43",
+    "cmd": "set volume 100",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:41:38",
+    "cmd": "sound download",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:41:44",
+    "cmd": "this recent Godzilla we are talking about",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:41:57",
+    "cmd": "November 16",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:42:09",
+    "cmd": "set volume to 50",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:42:12",
+    "cmd": "volume 50",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:42:24",
+    "cmd": "resume",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:42:36",
+    "cmd": "resume",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:43:01",
+    "cmd": "full screen",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:43:21",
+    "cmd": "sound and ultimate",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:43:35",
+    "cmd": "aur Samaj",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:43:50",
+    "cmd": "skip ad",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:43:54",
+    "cmd": "set volume 100",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:43:57",
+    "cmd": "skip ad",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:44:37",
+    "cmd": "full screen",
+    "ok": true
   }
 ]

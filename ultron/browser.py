@@ -352,7 +352,7 @@ class YouTubeBrowser:
         # Fallback: click play button
         btn = self._video_js(
             "const b=document.querySelector('.ytp-play-button');"
-            "if(b&&b.getAttribute('aria-label','').includes('Play')){b.click();return true;}"
+            "if(b&&(b.getAttribute('aria-label')||'').includes('Play')){b.click();return true;}"
             "return false;"
         )
         return bool(btn)
@@ -365,7 +365,7 @@ class YouTubeBrowser:
         if action == "play":
             result = self._video_js(
                 "const b=document.querySelector('.ytp-play-button');"
-                "if(b&&b.getAttribute('aria-label','').includes('Play')){b.click(); return true;}"
+                "if(b&&(b.getAttribute('aria-label')||'').includes('Play')){b.click(); return true;}"
                 "return false;"
             )
             if not result: result = self._try_play()
@@ -373,7 +373,7 @@ class YouTubeBrowser:
         elif action == "pause":
             result = self._video_js(
                 "const b=document.querySelector('.ytp-play-button');"
-                "if(b&&b.getAttribute('aria-label','').includes('Pause')){b.click(); return true;}"
+                "if(b&&(b.getAttribute('aria-label')||'').includes('Pause')){b.click(); return true;}"
                 "return false;"
             )
             if not result:
@@ -406,8 +406,10 @@ class YouTubeBrowser:
 
         elif action == "skip_ad":
             result = self._video_js(
-                "const b=document.querySelector('.ytp-ad-skip-button, .ytp-skip-ad-button, .ytp-ad-skip-button-modern');"
-                "if(b){b.click(); return true;}"
+                "const skip = document.querySelector('.ytp-ad-skip-button, .ytp-skip-ad-button, .ytp-ad-skip-button-modern, .ytp-ad-skip-button-container');"
+                "if(skip){skip.click(); return true;}"
+                "const vid = document.querySelector('video');"
+                "if(vid && document.querySelector('.ad-showing, .ytp-ad-player-overlay')){ vid.currentTime = isNaN(vid.duration) ? 999 : vid.duration; return true; }"
                 "return false;"
             )
 
