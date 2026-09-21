@@ -1,8 +1,9 @@
 {
   "active_timeout_seconds": 300,
-  "idle_recording_seconds": 2,
-  "active_recording_seconds": 4,
+  "idle_recording_seconds": 4,
+  "active_recording_seconds": 6,
   "speech_silence_rms": 150,
+  "speech_noise_floor_rms": 0,
   "speech_end_silence_seconds": 0.8,
   "speech_preroll_seconds": 0.3,
   "speech_sample_rate": 16000,
@@ -20,8 +21,15 @@
     "ultron exits",
     "ultron quit"
   ],
+  "pin_phrase": "",
   "vosk_model_path": "",
+  "vosk_full_commands": false,
   "speech_recognition_language": "en-IN",
   "tts_rate": 185,
-  "youtube_api_key": ""
+  "youtube_api_key": "",
+  "youtube_cache_max": 100,
+  "ptt_hotkey": "ctrl+space",
+  "max_restarts": 3,
+  "video_queue_max": 50,
+  "command_history_max": 500
 }
