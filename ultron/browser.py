@@ -167,6 +167,10 @@ class YouTubeBrowser:
             options.add_argument("--disable-notifications")
             options.add_argument("--autoplay-policy=no-user-gesture-required")
             
+            # Hide "Chrome is being controlled by automated test software" infobar
+            options.add_experimental_option("excludeSwitches", ["enable-automation"])
+            options.add_experimental_option('useAutomationExtension', False)
+            
             # Force Selenium to use standard installed Chrome instead of downloading Chromium
             chrome_paths = [
                 os.path.join(os.environ.get("PROGRAMFILES", ""), "Google", "Chrome", "Application", "chrome.exe"),
