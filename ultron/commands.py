@@ -199,6 +199,8 @@ def _parse_single(text: str, context_site: str) -> list[tuple[str, Any]] | None:
         return [("media_pause", None)]
     if text == "next":
         return [("media_next", None)]
+    if text in {"skip ad", "skip ads"}:
+        return [("media_skip_ad", None)]
     if text in {"volume up", "increase volume"}:
         return [("volume_change", +10)]
     if text in {"volume down", "decrease volume"}:
@@ -398,6 +400,10 @@ class CommandExecutor:
         if action == "media_next":
             ok = br.media_action("next")
             return ok, "Next video" if ok else "No next video (not in a playlist)"
+
+        if action == "media_skip_ad":
+            ok = br.media_action("skip_ad")
+            return ok, "Skipped ad" if ok else "Could not skip ad (none found)"
 
         if action in {"volume_change", "volume_set"}:
             current = br.get_volume()

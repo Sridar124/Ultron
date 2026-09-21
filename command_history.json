@@ -183,5 +183,305 @@
     "ts": "2026-09-21 11:40:45",
     "cmd": "YouTube",
     "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:43:03",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:43:19",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:43:41",
+    "cmd": "YouTube",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:43:52",
+    "cmd": "credential manager",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:44:13",
+    "cmd": "Achcha ji pocket option HD",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:44:58",
+    "cmd": "Sridhar at 123",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:45:43",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:45:49",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:46:02",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:46:12",
+    "cmd": "open 15",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:46:29",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:47:39",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:47:49",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:48:00",
+    "cmd": "process cycle",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:48:06",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:48:17",
+    "cmd": "what my YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:48:28",
+    "cmd": "YouTube open",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:48:41",
+    "cmd": "YouTube open on a YouTube open",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:48:55",
+    "cmd": "Doomsday trailer",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:49:07",
+    "cmd": "play Doomsday trailer",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:49:15",
+    "cmd": "volume",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:49:23",
+    "cmd": "volume",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:49:40",
+    "cmd": "resume",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:50:05",
+    "cmd": "resume",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:50:52",
+    "cmd": "create new tab",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:51:38",
+    "cmd": "in London",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:51:42",
+    "cmd": "search",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:51:54",
+    "cmd": "video playback you can pass receive by Airtel",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:52:03",
+    "cmd": "weather in Tokyo",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:52:27",
+    "cmd": "volume",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:52:37",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:52:52",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:53:04",
+    "cmd": "shearing seconds Kannada 2 second",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:53:31",
+    "cmd": "open YouTube open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:53:39",
+    "cmd": "4 second 4 second process",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:53:48",
+    "cmd": "false",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:54:05",
+    "cmd": "Yellamma 2 seconds order",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:54:21",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:55:39",
+    "cmd": "YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:56:04",
+    "cmd": "play Doomsday trailer",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:56:36",
+    "cmd": "pause the video",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:56:42",
+    "cmd": "resume",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:57:20",
+    "cmd": "resume",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:57:39",
+    "cmd": "YouTube settings",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:58:02",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:58:15",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:58:32",
+    "cmd": "YouTube",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:58:40",
+    "cmd": "raise the volume",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:58:59",
+    "cmd": "play Doomsday trailer",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:59:11",
+    "cmd": "open spotify",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:59:26",
+    "cmd": "Play Store",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:59:39",
+    "cmd": "play",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:59:48",
+    "cmd": "raise the volume",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:59:51",
+    "cmd": "volume up",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:59:57",
+    "cmd": "volume down",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:01:09",
+    "cmd": "play a song in spotify",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:01:27",
+    "cmd": "Doomsday trailer in Tamil",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:02:23",
+    "cmd": "pocket option HD",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:03:11",
+    "cmd": "play songs",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:03:28",
+    "cmd": "play any Tamil songs",
+    "ok": true
   }
 ]

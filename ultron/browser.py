@@ -349,38 +349,37 @@ class YouTubeBrowser:
 
         elif action == "pause":
             result = self._video_js(
-                "const v=document.querySelector('video');"
-                "if(!v)return false; v.pause(); return v.paused;"
+                "const p=document.getElementById('movie_player');"
+                "if(!p)return false; p.pauseVideo(); return true;"
             )
 
         elif action == "next":
-            # Detect disabled state first
-            disabled = self._video_js(
-                "const b=document.querySelector('.ytp-next-button');"
-                "return !b || b.disabled || b.getAttribute('aria-disabled')==='true';"
-            )
-            if disabled:
-                print("next: button is disabled (not in a playlist).")
-                return False
-            before = self.driver.current_url if self.driver else ""
             result = self._video_js(
-                "const b=document.querySelector('.ytp-next-button');"
-                "if(!b||b.disabled)return false; b.click(); return true;"
+                "const p=document.getElementById('movie_player');"
+                "if(!p)return false; p.nextVideo(); return true;"
             )
-            if result and self.driver:
-                try:
-                    WebDriverWait(self.driver, 10).until(lambda d: d.current_url != before)
-                except TimeoutException:
-                    pass
+            # Fallback to click if not in a playlist
+            if not result:
+                result = self._video_js(
+                    "const b=document.querySelector('.ytp-next-button');"
+                    "if(!b||b.disabled)return false; b.click(); return true;"
+                )
 
         elif action == "volume":
             result = self._video_js(
-                "const v=document.querySelector('video');"
-                "if(!v)return false;"
-                "v.muted=false;"
-                "v.volume=Math.max(0,Math.min(1,arguments[0]/100));"
-                "return Math.round(v.volume*100)===arguments[0];",
+                "const p=document.getElementById('movie_player');"
+                "if(!p)return false;"
+                "p.unMute();"
+                "p.setVolume(arguments[0]);"
+                "return p.getVolume() === arguments[0];",
                 amount,
+            )
+
+        elif action == "skip_ad":
+            result = self._video_js(
+                "const b=document.querySelector('.ytp-ad-skip-button, .ytp-skip-ad-button, .ytp-ad-skip-button-modern');"
+                "if(b){b.click(); return true;}"
+                "return false;"
             )
 
         elif action == "fullscreen":
