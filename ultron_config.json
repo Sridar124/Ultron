@@ -1,0 +1,27 @@
+{
+  "active_timeout_seconds": 300,
+  "idle_recording_seconds": 2,
+  "active_recording_seconds": 4,
+  "speech_silence_rms": 150,
+  "speech_end_silence_seconds": 0.8,
+  "speech_preroll_seconds": 0.3,
+  "speech_sample_rate": 16000,
+  "microphone_device": null,
+  "wake_word": "activate ultron",
+  "activation_phrases": [
+    "activate ultron",
+    "open ultron"
+  ],
+  "deactivation_phrases": [
+    "deactivate ultron",
+    "ultron deactivate",
+    "go to sleep",
+    "ultron exit",
+    "ultron exits",
+    "ultron quit"
+  ],
+  "vosk_model_path": "",
+  "speech_recognition_language": "en-IN",
+  "tts_rate": 185,
+  "youtube_api_key": ""
+}

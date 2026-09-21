@@ -1,0 +1,6 @@
+pyttsx3>=2.98
+SpeechRecognition>=3.14.0
+sounddevice>=0.5.0
+soundfile>=0.13.0
+selenium>=4.35.0
+vosk>=0.3.45
