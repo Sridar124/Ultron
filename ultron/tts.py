@@ -57,9 +57,13 @@ class TTSWorker:
         while True:
             item = self._queue.get()
             if item is None:
+                if hasattr(self._queue, "task_done"):
+                    self._queue.task_done()
                 break
             text, rate_override = item
             self._speak_sync(text, rate_override)
+            if hasattr(self._queue, "task_done"):
+                self._queue.task_done()
 
     def _speak_sync(self, text: str, rate_override: int) -> None:
         """Actually speak — only called from the TTS thread."""

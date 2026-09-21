@@ -404,6 +404,7 @@ class Ultron:
 
     def shutdown(self) -> None:
         self._executor.cancel_timers()
+        self._tts.wait_until_done()
         self._browser.close()
         self._ptt.stop()
         self._tray.stop()

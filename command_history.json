@@ -593,5 +593,90 @@
     "ts": "2026-09-21 12:16:13",
     "cmd": "deactivate government",
     "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:20:01",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:20:17",
+    "cmd": "YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:21:40",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:21:48",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:22:04",
+    "cmd": "YouTube",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:22:20",
+    "cmd": "play any English song",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:22:26",
+    "cmd": "skip ad",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:22:36",
+    "cmd": "skip ad",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:22:42",
+    "cmd": "skip ads",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:22:47",
+    "cmd": "skip ad",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:22:53",
+    "cmd": "full screen",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:22:58",
+    "cmd": "full screen",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:23:07",
+    "cmd": "NTR full screen",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:23:14",
+    "cmd": "full screen",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:23:19",
+    "cmd": "950",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:23:27",
+    "cmd": "set volume 50",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:24:00",
+    "cmd": "activate Ultron",
+    "ok": false
   }
 ]
