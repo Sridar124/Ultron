@@ -1,0 +1,187 @@
+[
+  {
+    "ts": "2026-09-21 11:21:54",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:22:16",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:22:32",
+    "cmd": "activate Ultron",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:22:47",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:26:04",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:26:32",
+    "cmd": "open YouTube and play lofi music",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:26:57",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:27:22",
+    "cmd": "YouTube",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:29:41",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:29:49",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:30:04",
+    "cmd": "YouTube",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:31:04",
+    "cmd": "deactivate banana",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:31:26",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:31:39",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:32:01",
+    "cmd": "YouTube",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:32:06",
+    "cmd": "hello",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:32:19",
+    "cmd": "Marwadi comedy Raat",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:32:58",
+    "cmd": "Sadharan coronavirus",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:33:12",
+    "cmd": "delete the WhatsApp",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:33:18",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:34:21",
+    "cmd": "YouTube",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:35:06",
+    "cmd": "screenshot Kannada",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:35:17",
+    "cmd": "artificial",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:35:21",
+    "cmd": "PTC",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:35:32",
+    "cmd": "snipping",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:35:43",
+    "cmd": "open YouTube",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:37:27",
+    "cmd": "open spotify",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:37:36",
+    "cmd": "open WhatsApp",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:37:51",
+    "cmd": "YouTube Spotify Google",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:38:05",
+    "cmd": "like Jenny",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:38:22",
+    "cmd": "play like Jenny",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:38:57",
+    "cmd": "play Godzilla trailer",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:39:01",
+    "cmd": "kidora entry",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:39:32",
+    "cmd": "motu",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:39:54",
+    "cmd": "volume",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 11:40:33",
+    "cmd": "YouTube",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 11:40:45",
+    "cmd": "YouTube",
+    "ok": true
+  }
+]

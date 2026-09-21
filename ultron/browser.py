@@ -167,6 +167,10 @@ class YouTubeBrowser:
             options.add_argument("--disable-notifications")
             options.add_argument("--autoplay-policy=no-user-gesture-required")
             
+            # Use a persistent profile so the user stays logged in
+            profile_dir = PROJECT_DIR / "ultron_chrome_profile"
+            options.add_argument(f"--user-data-dir={profile_dir}")
+            
             # Hide "Chrome is being controlled by automated test software" infobar
             options.add_experimental_option("excludeSwitches", ["enable-automation"])
             options.add_experimental_option('useAutomationExtension', False)
