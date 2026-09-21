@@ -383,11 +383,10 @@ class YouTubeBrowser:
             )
 
         elif action == "fullscreen":
-            result = self._async_video_js(
-                "const done=arguments[arguments.length-1];"
-                "const t=document.querySelector('.html5-video-player')||document.querySelector('video');"
-                "if(!t||!t.requestFullscreen)return done(false);"
-                "t.requestFullscreen().then(()=>done(document.fullscreenElement===t)).catch(()=>done(false));"
+            result = self._video_js(
+                "const b=document.querySelector('.ytp-fullscreen-button');"
+                "if(b){b.click(); return true;}"
+                "return false;"
             )
         else:
             return False
@@ -410,6 +409,16 @@ class YouTubeBrowser:
         ok = self.open(url)
         if ok:
             time.sleep(1.5)     # Brief wait for player load
+            
+            # Check if YouTube threw a "Something went wrong" error screen and refresh if so
+            is_error = self._video_js(
+                "return !!document.querySelector('.yt-playability-error-supported-renderers, .ytp-error-content');"
+            )
+            if is_error:
+                print("YouTube error screen detected. Refreshing...")
+                self.driver.refresh()
+                time.sleep(2.0)
+                
             self._try_play()    # Attempt autoplay
         return ok
 

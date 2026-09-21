@@ -483,5 +483,115 @@
     "ts": "2026-09-21 12:03:28",
     "cmd": "play any Tamil songs",
     "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:08:38",
+    "cmd": "set volume 50",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:08:50",
+    "cmd": "Randa party",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:08:59",
+    "cmd": "resume",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:09:15",
+    "cmd": "play any Tamil song",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:09:27",
+    "cmd": "keypad",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:09:47",
+    "cmd": "play any Tamil song",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:09:54",
+    "cmd": "volume 50",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:10:06",
+    "cmd": "set volume 100",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:10:22",
+    "cmd": "next video",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:10:28",
+    "cmd": "previous video",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:10:38",
+    "cmd": "next video",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:11:17",
+    "cmd": "next video",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:11:35",
+    "cmd": "play Godzilla trailer",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:11:49",
+    "cmd": "full screen",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:12:10",
+    "cmd": "full screen",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:12:32",
+    "cmd": "play a game",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:12:41",
+    "cmd": "play a game",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:13:08",
+    "cmd": "Godzilla trailer",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:13:23",
+    "cmd": "play Godzilla trailer",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:14:34",
+    "cmd": "nephron",
+    "ok": false
+  },
+  {
+    "ts": "2026-09-21 12:14:42",
+    "cmd": "play next",
+    "ok": true
+  },
+  {
+    "ts": "2026-09-21 12:16:13",
+    "cmd": "deactivate government",
+    "ok": false
   }
 ]
